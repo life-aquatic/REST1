@@ -1,0 +1,10 @@
+kissa cat
+koira dog
+auto car
+talo house
+kirja book
+pöytä table
+tuoli chair
+ikkuna window
+ovi door
+kynä pen
