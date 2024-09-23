@@ -9,4 +9,3 @@ ikkuna window
 ovi door
 kynä pen
 vesi water
-undefined undefined
