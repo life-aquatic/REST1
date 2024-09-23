@@ -4,6 +4,7 @@ package-lock.json
 npm-shrinkwrap.json
 *.log
 *.gz
+.DS_Store
 
 # Coveralls
 .nyc_output
