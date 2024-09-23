@@ -1,11 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import HakuForm from "./components/HakuForm.js";
+import LisForm from "./components/LisForm.js";
 
 function App() {
   return (
     <div className="App">
+      <HakuForm />
+      <LisForm />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
