@@ -1,26 +1,18 @@
-import logo from "./logo.svg";
 import "./App.css";
 import HakuForm from "./components/HakuForm.js";
 import LisForm from "./components/LisForm.js";
 
+// Tämä komponentti renderöi hakulomakkeen ja lisäyslomakkeen
 function App() {
   return (
     <div className="App">
-      <HakuForm />
-      <LisForm />
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Box">
+        <h4>Haku</h4>
+        <HakuForm />
+        <div class="divider"></div>
+        <h4>Uuden sanan lisääminen</h4>
+        <LisForm />
+      </div>
     </div>
   );
 }

@@ -9,12 +9,20 @@ const HakuForm = () => {
     setInputValue(event.target.value);
   };
 
+  // Hakulomake
   return (
-    <div>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
-      <Haku fin={inputValue} />
+    <div className="FormClass">
+      <form>
+        <label>
+          Hae suomenkielinen sana:
+          <input type="text" value={inputValue} onChange={handleInputChange} />
+        </label>
+      </form>
+      <div className="ResponseBox">
+        <Haku fin={inputValue} />
+      </div>
     </div>
-  );
+  ); // Näytetään hakutulokset syötetyn sanan perusteella
 };
 
 export default HakuForm;

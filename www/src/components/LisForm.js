@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function LisForm() {
   const [inputs, setInputs] = useState({});
+  const [serverResponse, setServerResponse] = useState(null);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -9,6 +10,7 @@ function LisForm() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+  // POST-pyyntö uuden sanan lisäämiseksi
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -20,32 +22,50 @@ function LisForm() {
       body: JSON.stringify(inputs),
     })
       .then((response) => response.json())
-      .then((inputs) => console.log(inputs))
-      .catch((error) => console.error("Error:", error));
+      .then((data) => {
+        setServerResponse(data);
+      })
+      .catch((error) => {
+        setServerResponse({ error: error.message });
+      });
   };
 
+  // Lisäyslomake
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Fin:
-        <input
-          type="text"
-          name="fin"
-          value={inputs.fin || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Eng:
-        <input
-          type="text"
-          name="eng"
-          value={inputs.eng || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit" />
-    </form>
+    <div className="FormClass">
+      <form onSubmit={handleSubmit}>
+        <label>
+          Fin:
+          <input
+            type="text"
+            name="fin"
+            value={inputs.fin || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Eng:
+          <input
+            type="text"
+            name="eng"
+            value={inputs.eng || ""}
+            onChange={handleChange}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+
+      <div className="ServerResponse">
+        {serverResponse && (
+          <div>
+            {serverResponse.error
+              ? `Virhe: ${serverResponse.error}`
+              : `${serverResponse.message}`}
+          </div>
+        )}
+      </div>
+    </div>
+    // Näytetään palvelimen vastaus tai virheviesti
   );
 }
 
