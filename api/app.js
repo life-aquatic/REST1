@@ -16,8 +16,8 @@ app.use((req, res, next) => {
 });
 
 // GET-pyyntö "/words"-reitille
-app.get("/words", function (req, res) {
-  const wordParam = req.query.word;
+app.get("/words/:word", function (req, res) {
+  const wordParam = req.params.word;
 
   // Sanakirjatiedoston lukeminen
   const data = fs.readFileSync("./dictionary.txt", {
@@ -42,7 +42,7 @@ app.get("/words", function (req, res) {
   if (foundWord) {
     res.json(foundWord.eng);
   } else {
-    res.status(404).json({ message: `Sanaa ${wordParam} ei löytynyt.` });
+    res.status(404).json(`Sanaa ${wordParam} ei löytynyt.`);
   }
 });
 
